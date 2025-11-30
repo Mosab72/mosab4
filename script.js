@@ -279,7 +279,7 @@ function displayUniversities() {
                 </div>
                 <div class="university-stat">
                     <div class="stat-number">${getUniversityUrgentCount(uni.contracts)}</div>
-                    <div class="stat-text"></div>
+                    <div class="stat-text">العقود المتاخرة</div>
                 </div>
             </div>
         </div>
