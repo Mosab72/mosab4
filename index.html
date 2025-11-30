@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة عقود الاعتماد الأكاديمي</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- رأس الصفحة -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-logo">
+                <h1>🎓 نظام إدارة عقود الاعتماد الأكاديمي</h1>
+                <p class="header-subtitle">المركز الوطني للتقويم والاعتماد الأكاديمي</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- لوحة الإحصائيات الرئيسية -->
+    <section class="stats-overview">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-value" id="totalContracts">445</div>
+                    <div class="stat-label">إجمالي العقود</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏛️</div>
+                    <div class="stat-value" id="totalUniversities">39</div>
+                    <div class="stat-label">الجامعات والكليات</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-value" id="totalDepartments">5</div>
+                    <div class="stat-label">التخصصات الرئيسية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- أزرار التبويبات -->
+    <section class="tabs-section">
+        <div class="container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="overview">📋 نظرة عامة</button>
+                <button class="tab-btn" data-tab="expiry">📅 التصنيف حسب الانتهاء</button>
+                <button class="tab-btn" data-tab="universities">🏛️ حسب الجامعات</button>
+                <button class="tab-btn" data-tab="departments">📚 حسب الأقسام</button>
+                <button class="tab-btn" data-tab="all-contracts">📋 جميع العقود</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- محتوى التبويبات -->
+    <main class="main-content">
+        <div class="container">
+            <!-- تبويب نظرة عامة -->
+            <div id="overview-tab" class="tab-content active">
+                <h2 class="section-title">نظرة عامة على عقود الاعتماد الأكاديمي</h2>
+                
+                <div class="overview-section">
+                    <div class="overview-card">
+                        <h3>📊 ملخص الإحصائيات</h3>
+                        <div class="overview-stats">
+                            <div class="overview-stat-item">
+                                <span class="overview-label">إجمالي العقود:</span>
+                                <span class="overview-value" id="overview-total">445</span>
+                            </div>
+                            <div class="overview-stat-item">
+                                <span class="overview-label">عدد الجامعات والكليات:</span>
+                                <span class="overview-value" id="overview-universities">39</span>
+                            </div>
+                            <div class="overview-stat-item">
+                                <span class="overview-label">عدد التخصصات الرئيسية:</span>
+                                <span class="overview-value" id="overview-departments">5</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3>📅 التوزيع حسب تاريخ الانتهاء</h3>
+                        <div class="overview-expiry-grid" id="overview-expiry-summary">
+                            <!-- سيتم ملؤها ديناميكياً -->
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3>🏛️ أكبر 5 جامعات حسب عدد العقود</h3>
+                        <div class="overview-top-list" id="overview-top-universities">
+                            <!-- سيتم ملؤها ديناميكياً -->
+                        </div>
+                    </div>
+
+                    <div class="overview-card">
+                        <h3>📚 التوزيع حسب التخصصات</h3>
+                        <div class="overview-departments-grid" id="overview-departments-summary">
+                            <!-- سيتم ملؤها ديناميكياً -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- تبويب التصنيف حسب تاريخ الانتهاء -->
+            <div id="expiry-tab" class="tab-content">
+                <h2 class="section-title">التصنيف حسب تاريخ انتهاء العقد</h2>
+                
+                <div class="expiry-category critical">
+                    <div class="category-header">
+                        <h3>🔴 حرج - قبل نهاية 2024</h3>
+                        <span class="count-badge" id="count-before-2024">0</span>
+                    </div>
+                    <div class="contracts-list" id="contracts-before-2024"></div>
+                </div>
+
+                <div class="expiry-category high">
+                    <div class="category-header">
+                        <h3>🟠 مرتفع - النصف الأول من 2025</h3>
+                        <span class="count-badge" id="count-h1-2025">0</span>
+                    </div>
+                    <div class="contracts-list" id="contracts-h1-2025"></div>
+                </div>
+
+                <div class="expiry-category medium">
+                    <div class="category-header">
+                        <h3>🟡 متوسط - النصف الثاني من 2025</h3>
+                        <span class="count-badge" id="count-h2-2025">0</span>
+                    </div>
+                    <div class="contracts-list" id="contracts-h2-2025"></div>
+                </div>
+
+                <div class="expiry-category normal">
+                    <div class="category-header">
+                        <h3>🟢 عادي - من 2026 فصاعداً</h3>
+                        <span class="count-badge" id="count-2026-plus">0</span>
+                    </div>
+                    <div class="contracts-list" id="contracts-2026-plus"></div>
+                </div>
+            </div>
+
+            <!-- تبويب الجامعات -->
+            <div id="universities-tab" class="tab-content">
+                <h2 class="section-title">التصنيف حسب الجامعات والكليات</h2>
+                
+                <!-- أدوات البحث والفلترة -->
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <input type="text" id="university-search" placeholder="🔍 ابحث عن جامعة أو كلية...">
+                    </div>
+                    <div class="filter-options">
+                        <select id="university-filter">
+                            <option value="all">جميع الجامعات والكليات</option>
+                        </select>
+                        <button class="btn-reset" onclick="resetFilters()">إعادة تعيين</button>
+                    </div>
+                </div>
+
+                <!-- قائمة الجامعات -->
+                <div class="universities-grid" id="universities-list"></div>
+                
+                <!-- تفاصيل العقود حسب الجامعة -->
+                <div id="university-contracts-details" class="contracts-details-section" style="display: none;">
+                    <div class="details-header">
+                        <h3 id="selected-university-name"></h3>
+                        <button class="btn-close" onclick="closeUniversityDetails()">✖ إغلاق</button>
+                    </div>
+                    <div class="contracts-list" id="university-contracts-list"></div>
+                </div>
+            </div>
+
+            <!-- تبويب الأقسام -->
+            <div id="departments-tab" class="tab-content">
+                <h2 class="section-title">التصنيف حسب الأقسام الرئيسية</h2>
+                <div class="departments-grid" id="departments-list"></div>
+            </div>
+
+            <!-- تبويب جميع العقود -->
+            <div id="all-contracts-tab" class="tab-content">
+                <h2 class="section-title">جميع العقود (445)</h2>
+                <div class="search-box">
+                    <input type="text" id="all-contracts-search" placeholder="🔍 ابحث في جميع العقود...">
+                </div>
+                <div class="contracts-list" id="all-contracts-list"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- نافذة تفاصيل العقد المنبثقة -->
+    <div id="contract-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div id="contract-details"></div>
+        </div>
+    </div>
+
+    <!-- تذييل الصفحة -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2024 المركز الوطني للتقويم والاعتماد الأكاديمي | المملكة العربية السعودية</p>
+            <p class="footer-note">نظام إدارة عقود الاعتماد الأكاديمي - الإصدار 4.0</p>
+        </div>
+    </footer>
+
+    <!-- تضمين الملفات -->
+    <script src="contracts_data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
